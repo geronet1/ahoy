@@ -33,7 +33,9 @@ void ahoyeth::setup(settings_t *config, uint32_t *utcTimestamp, OnNetworkCB onNe
     #if defined(CONFIG_IDF_TARGET_ESP32S3)
     mEthSpi.begin(DEF_ETH_MISO_PIN, DEF_ETH_MOSI_PIN, DEF_ETH_SCK_PIN, DEF_ETH_CS_PIN, DEF_ETH_IRQ_PIN, DEF_ETH_RST_PIN);
     #else
-    ETH.begin(DEF_ETH_MISO_PIN, DEF_ETH_MOSI_PIN, DEF_ETH_SCK_PIN, DEF_ETH_CS_PIN, DEF_ETH_IRQ_PIN, ETH_SPI_CLOCK_MHZ, ETH_SPI_HOST);
+    uint8_t baseMac[6];
+    esp_read_mac(baseMac, ESP_MAC_ETH);
+    ETH.begin(DEF_ETH_MISO_PIN, DEF_ETH_MOSI_PIN, DEF_ETH_SCK_PIN, DEF_ETH_CS_PIN, DEF_ETH_IRQ_PIN, ETH_SPI_CLOCK_MHZ, ETH_SPI_HOST, baseMac);
     #endif
 
     if(mConfig->sys.ip.ip[0] != 0) {

@@ -419,6 +419,11 @@
                     "de": "Graph Anzeigeverh&auml;ltnis (0-100%)"
                 },
                 {
+                    "token": "MQTT_JSON",
+                    "en": "Payload as JSON",
+                    "de": "Ausgabe als JSON"
+                },
+                {
                     "token": "GRAPH_POSITION",
                     "en": "Graph pos (from/to)",
                     "de": "Graph Position (von/bis)"
