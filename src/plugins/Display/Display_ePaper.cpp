@@ -1,3 +1,5 @@
+#if defined(PLUGIN_DISPLAY)
+
 #include "Display_ePaper.h"
 
 #ifdef ESP8266
@@ -311,3 +313,5 @@ void DisplayEPaper::tickerSecond() {
     refreshLoop();
 }
 #endif  // ESP32
+
+#endif //PLUGIN_DISPLAY

@@ -151,7 +151,7 @@ class Inverter {
         HeuristicInv  heuristics;                           // heuristic information / logic
         uint8_t       curCmtFreq = 0;                       // current used CMT frequency, used to check if freq. was changed during runtime
         uint32_t      tsMaxAcPower = 0;                     // holds the timestamp when the MaxAC power was seen
-        uint32_t      tsMaxTemp = 0;                        // holds the timestamp when the max temp was seen
+        uint32_t      tsMaxTemperature = 0;                 // holds the timestamp when the max temp was seen
         bool          commEnabled = true;                   // 'pause night communication' sets this field to false
 
     public:
@@ -974,7 +974,7 @@ static T calcMaxTempCh0(Inverter<> *iv, uint8_t arg0) {
             }
         }
         if(Temp > maxTemp) {
-            iv->tsMaxTemperature = *iv->Timestamp;
+            iv->tsMaxTemperature = *iv->timestamp;
             return Temp;
         }
     }

@@ -52,7 +52,8 @@ class PubMqtt {
 
         ~PubMqtt() { }
 
-        void setup(cfgMqtt_t *cfg_mqtt, const char *devName, const char *version, HMSYSTEM *sys, uint32_t *utcTs, uint32_t *uptime) {
+        void setup(IApp *app, cfgMqtt_t *cfg_mqtt, const char *devName, const char *version, HMSYSTEM *sys, uint32_t *utcTs, uint32_t *uptime) {
+            mApp             = app;
             mCfgMqtt         = cfg_mqtt;
             mDevName         = devName;
             mVersion         = version;
@@ -61,7 +62,7 @@ class PubMqtt {
             mUptime          = uptime;
             mIntervalTimeout = 1;
 
-            SendIvData.setup(sys, cfg_mqtt->json, utcTs, &mSendList);
+            SendIvData.setup(app, sys, utcTs, &mSendList);
             SendIvData.setPublishFunc([this](const char *subTopic, const char *payload, bool retained, uint8_t qos) {
                 publish(subTopic, payload, retained, true, qos);
             });
@@ -614,6 +615,7 @@ class PubMqtt {
 
         espMqttClient mClient;
         cfgMqtt_t *mCfgMqtt = nullptr;
+        IApp *mApp;
         #if defined(ESP8266)
         WiFiEventHandler mHWifiCon, mHWifiDiscon;
         #endif

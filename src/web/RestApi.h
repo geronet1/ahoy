@@ -605,7 +605,7 @@ class RestApi {
             obj[F("alarm_cnt")]        = iv->alarmCnt;
             obj[F("rssi")]             = iv->rssi;
             obj[F("ts_max_ac_pwr")]    = iv->tsMaxAcPower;
-            obj[F("ts_max_temp")]      = iv->tsMaxTemp;
+            obj[F("ts_max_temp")]      = iv->tsMaxTemperature;
 
             JsonArray ch = obj.createNestedArray("ch");
 

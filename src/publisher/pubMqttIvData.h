@@ -24,7 +24,7 @@ class PubMqttIvData {
     public:
         PubMqttIvData() : mTotal{}, mSubTopic{}, mVal{} {}
 
-        void setup(HMSYSTEM *sys, bool json, uint32_t *utcTs, std::queue<sendListCmdIv> *sendList) {
+        void setup(IApp *app, HMSYSTEM *sys, uint32_t *utcTs, std::queue<sendListCmdIv> *sendList) {
             mSys           = sys;
             mJson          = app->getMqttJsonEnabled();
             mUtcTimestamp  = utcTs;
